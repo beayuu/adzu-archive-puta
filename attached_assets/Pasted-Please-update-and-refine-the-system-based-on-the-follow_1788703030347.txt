@@ -1,0 +1,210 @@
+Please update and refine the system based on the following requirements. Make sure the changes are applied according to the user's role: **Regular User** and **Admin**.
+
+## 1. Regular User
+
+### Profile
+
+* Remove the **dropdown icon** from the profile section/sidebar.
+* The profile should simply display the user's information without the dropdown control.
+
+### Search
+
+* Allow the regular user to search using either:
+
+  * **Student Name**
+  * **Student ID**
+* The search should return the appropriate student records regardless of whether the user searches by name or ID.
+
+### Dashboard
+
+For regular users, remove the following controls from the dashboard:
+
+* **Upload Document**
+* **Archive**
+
+The regular user's dashboard should not provide access to these admin-level controls.
+
+### Recent Activity
+
+* Remove the current behavior where regular users can see the activities of other users.
+* The **Recent Activity** section should only display activities performed by the currently logged-in user.
+* Do not show activities from admins or other regular users.
+
+### Login / User Identification
+
+* After login, display the **actual logged-in username** instead of the generic text **"Regular user"**.
+* Anywhere the interface currently displays "Regular user" as the user's identity, replace it with the appropriate username.
+
+---
+
+# 2. Admin User
+
+### Search
+
+* Allow the admin to search students using either:
+
+  * **Student Name**
+  * **Student ID**
+* The search should work correctly for both types of input.
+
+### Activity Log
+
+* Make the **sidebar static/fixed**.
+* When the admin scrolls through the Activity Log content, only the main white/content area should scroll.
+* The sidebar should remain in place and should not move or scroll together with the Activity Log page.
+
+### Student Search / Folders
+
+* When searching for a student, remove the unnecessary folder display from the search results/interface.
+* The student search area should focus on the **search bar and search results**.
+* Do not automatically display student folders inside the search section unless they are specifically needed.
+
+### Archive Control
+
+* Fix the **Archive toggle/switch** on the dashboard.
+* Make sure the switch correctly reflects the archive state.
+* Ensure that enabling/disabling the archive functionality actually updates the corresponding state and behaves consistently throughout the system.
+* Improve the UI/interaction if necessary so the switch clearly communicates whether the feature is ON or OFF.
+
+---
+
+# 3. Admin Settings
+
+Create a **Settings page with two tabs**.
+
+## Tab 1: Student Folder & Document Settings
+
+This tab should contain the necessary configuration for:
+
+* Student folder naming/format
+* Required details when uploading a document
+* Required details when creating a folder
+* Other necessary document/folder configuration
+
+The folder naming format should be configurable by the admin.
+
+For example, the admin could configure a folder format such as:
+
+`{Student ID} - {Student Name}`
+
+or another appropriate naming structure.
+
+### Folder and Document Interactivity
+
+Create a proper relationship between **folders and documents**.
+
+When an admin creates/uploads a document:
+
+1. The system should identify the appropriate student.
+2. The system should determine the appropriate folder based on the configured folder naming/organization rules.
+3. If the corresponding student folder already exists, the document should be placed/connected to that folder.
+4. If the folder does not exist, the system should automatically create the appropriate folder based on the configured format.
+5. The document should then be associated with that folder.
+
+The folder and document system should feel connected rather than functioning as separate features.
+
+For example:
+
+**Admin creates/uploads document → System identifies student → System checks for student folder → Creates folder if needed → Document is connected to that folder.**
+
+Make sure this relationship is reflected both in the UI and in the underlying functionality/data structure.
+
+---
+
+## Tab 2: Archive Location
+
+Create a separate settings tab for configuring the **Archive Location**.
+
+The admin should be able to:
+
+* View the current archive location.
+* Change the archive location when permitted.
+* Save/update the new archive location.
+* Clearly see whether the archive location is currently configured.
+
+Make the archive location setting functional, not just visual.
+
+---
+
+# 4. Status UI — Regular User and Admin
+
+For **both Regular Users and Admins**, improve the way statuses are displayed.
+
+Currently, statuses are displayed as plain text. Replace this with a more polished **status UI component**.
+
+For example, use:
+
+* Status badges/pills
+* Appropriate icons
+* Clear visual distinctions between different statuses
+* Consistent styling throughout the system
+
+Possible statuses could be displayed as:
+
+* 🟢 **Active**
+* 🟡 **Pending**
+* 🔵 **Processing**
+* 🔴 **Archived**
+* ⚪ **Inactive**
+
+Use whatever statuses already exist in the system, but present them as proper UI elements instead of plain text.
+
+The status design should:
+
+* Be easy to understand at a glance.
+* Be visually consistent.
+* Work for both Regular Users and Admins.
+* Remain accessible and readable.
+* Match the overall design of the application.
+
+---
+
+# 5. Role-Based Access
+
+Please make sure that the interface and functionality are properly separated between **Regular Users** and **Admins**.
+
+### Regular User
+
+Regular users should:
+
+* Search by Student Name or Student ID.
+* See their own username after login.
+* See only their own recent activities.
+* NOT see the Upload Document control on the dashboard.
+* NOT see the Archive control on the dashboard.
+* NOT see activities performed by other users.
+
+### Admin
+
+Admins should:
+
+* Search by Student Name or Student ID.
+* Have access to the Activity Log.
+* Have access to document/folder management.
+* Have access to Archive controls.
+* Have access to Settings.
+* Be able to configure folder/document requirements.
+* Be able to configure the archive location.
+* Be able to create/upload documents and have them properly connected to student folders.
+
+---
+
+# 6. Important Implementation Requirements
+
+Please do not only modify the visual appearance. Make sure the underlying functionality also works correctly.
+
+Specifically:
+
+* Search by **Name OR Student ID** must actually work.
+* The logged-in username must come from the authenticated user rather than being hardcoded.
+* Regular-user activity filtering must be based on the currently authenticated user's ID.
+* Admin and regular-user permissions must be enforced functionally, not only hidden in the UI.
+* The Archive switch must actually change the archive state.
+* Folder/document relationships must be properly maintained.
+* Creating/uploading a document must automatically connect it to the appropriate student folder.
+* Missing student folders should be created automatically when required.
+* Archive location changes should persist.
+* The new status UI should use the actual status values from the system.
+* Avoid breaking existing functionality while implementing these changes.
+
+Before finishing, test the functionality for **both Regular User and Admin accounts** and verify that each role only has access to the features intended for that role.
